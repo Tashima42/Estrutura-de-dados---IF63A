@@ -32,7 +32,6 @@ typedef struct
 
 long int dateToDays(date *pDate); 
 date *daysToDate(long int days);
-
 date *readDate();
 void showDate(date *pDate);
 void checkValidDate(date *pDate);
@@ -43,12 +42,12 @@ int main() {
     date *pDate1, *pDate2;
     
     //Read both dates
-    printf("Date 1: ");
+    printf("Date 1: \n");
     pDate1 = readDate();
 
     printf("----------------------\n");
 
-    printf("Date 2: ");
+    printf("Date 2: \n");
     pDate2 = readDate();
 
     //Check if the dates are valid
@@ -107,8 +106,7 @@ void showDate(date *pDate)
 {
     //DD/MM/YYYY
     printf("%d/%d/%d\n", pDate->day, pDate->month, pDate->year);
-
-    //Month, day, year
+    //Month day, year
     printf("%s %d, %d\n", monthInChar(pDate), pDate->day, pDate->year);
     //YYYY-MM-DD
     printf("%d/%d/%d\n", pDate->year, pDate->month, pDate->day);
@@ -126,7 +124,7 @@ void checkValidDate(date *pDate)
         printf("Invalid date\n");
         exit(EXIT_SUCCESS);
     }
-    else if (pDate->day > 31 || pDate->day < 0)
+    else if (pDate->day > 31 || pDate->day < 1)
     {
         printf("Invalid date\n");
         exit(EXIT_SUCCESS);
