@@ -30,7 +30,7 @@ typedef struct
     int day;
 } date;
 
-long int dateToDays(date *pDate);
+long int dateToDays(date *pDate); 
 date *daysToDate(long int days);
 
 date *readDate();
@@ -42,6 +42,7 @@ long int intervalBetweenDates(date *pDate1, date *pDate2);
 int main() {
     date *pDate1, *pDate2;
     
+    //Read both dates
     printf("Date 1: ");
     pDate1 = readDate();
 
@@ -50,11 +51,13 @@ int main() {
     printf("Date 2: ");
     pDate2 = readDate();
 
+    //Check if the dates are valid
     checkValidDate(pDate1);
     checkValidDate(pDate2);
 
+    //Print dates int 3 formats
     printf("----------------------\n");
-
+    
     printf("Date 1: \n");
     showDate(pDate1);
 
@@ -64,7 +67,8 @@ int main() {
     showDate(pDate2);
 
     printf("----------------------\n");
-
+    
+    //Print the interval between dates in days
     printf("The interval between Date 1 and Date 2 is: %ld days\n", intervalBetweenDates(pDate1, pDate2));
 
     return 0;
