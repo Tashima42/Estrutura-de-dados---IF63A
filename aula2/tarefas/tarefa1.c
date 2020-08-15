@@ -1,62 +1,71 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct NodeItem {
+typedef struct NodeItem
+{
   int info;
   struct NodeItem *prox;
 } node;
 
-typedef struct {
+typedef struct
+{
   node *top;
 } stack;
 
 void newStack(stack *p);
-void push(stack *p, int value);
-int pop(stack *p);
-int top(stack *p);
+void push(stack *p, char value);
+char pop(stack *p);
+char top(stack *p);
 int isEmpty(stack *p);
-node *newNode(int value);
+node *newNode(char value);
 
-int main() {
+int main()
+{
   stack pilha;
 
   newStack(&pilha);
-  push(&pilha, 3);
-  push(&pilha, 4);
+  push(&pilha, 'o');
+  push(&pilha, '1');
   pop(&pilha);
-  push(&pilha, 5);
-  push(&pilha, 6);
+  push(&pilha, 'm');
+  push(&pilha, 'a');
   pop(&pilha);
-  push(&pilha, 7);
-  push(&pilha, 8);
+  push(&pilha, 'n');
+  push(&pilha, 'o');
 
-  while (!isEmpty(&pilha)) {
-    printf("%d ", pop(&pilha));
+  while (!isEmpty(&pilha))
+  {
+    printf("%c ", pop(&pilha));
   }
 }
 
-node *newNode(int value) {
+node *newNode(char value)
+{
   node *n = (node *)malloc(sizeof(node));
   n->info = value;
   n->prox = NULL;
   return n;
 }
 
-void newStack(stack *p){
+void newStack(stack *p)
+{
   p->top = NULL;
 }
 
-int isEmpty(stack *p) {
+int isEmpty(stack *p)
+{
   return p->top == NULL;
 }
 
-void push(stack *p, int value) {
+void push(stack *p, char value)
+{
   node *n = newNode(value);
   n->prox = p->top;
   p->top = n;
 }
 
-int pop(stack *p) {
+char pop(stack *p)
+{
   node *n;
   int aux;
   aux = top(p);
@@ -66,8 +75,10 @@ int pop(stack *p) {
   return aux;
 }
 
-int top(stack *p) {
-  if (isEmpty(p)) {
+char top(stack *p)
+{
+  if (isEmpty(p))
+  {
     printf("Stack underflow!\n");
     exit(1);
   }
