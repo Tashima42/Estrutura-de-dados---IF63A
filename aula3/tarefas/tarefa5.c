@@ -1,0 +1,1 @@
+/* 6) Utilizando uma fila circular, faça um programa para contar a quantidade de elementos em uma fila. */ * /

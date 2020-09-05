@@ -1,0 +1,1 @@
+/* 4) Faça uma programa para verificar se os elementos de uma fila (representada por listas encadeadas) estão ordenados de forma crescente. */
