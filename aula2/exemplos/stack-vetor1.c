@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define N 5
+#define N 6
 
 typedef struct
 {
@@ -57,6 +57,25 @@ int top(stack *s)
   return s->vet[s->top - 1];
 }
 
+void removeMultiplesOfThree(stack *s)
+{
+  stack temp;
+  newStack(&temp);
+  
+  while (!isEmpty(s))
+  {
+    int popedNumber = pop(s);
+    if ((popedNumber % 3) != 0)
+    {
+      push(&temp, popedNumber);
+    }
+  }
+  while (!isEmpty(&temp))
+  {
+    push(s, pop(&temp));
+  }
+}
+
 int main()
 {
   stack pilha;
@@ -65,12 +84,13 @@ int main()
 
   push(&pilha, 3);
   push(&pilha, 4);
-  pop(&pilha);
   push(&pilha, 5);
   push(&pilha, 6);
-  pop(&pilha);
   push(&pilha, 7);
-  push(&pilha, 8);
+  push(&pilha, 9);
+
+  removeMultiplesOfThree(&pilha);
+
   while (!isEmpty(&pilha))
   {
     printf("%d ", pop(&pilha));

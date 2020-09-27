@@ -25,13 +25,19 @@ typedef struct
 
 void removeMultiplesOfThree(stack *s)
 {
-  stack *temp;
+  stack temp;
+  newStack(&temp);
 
-  if(isEmpty(s))
+  while (!isEmpty(s))
   {
-    return 0;
+    int popedNumber = pop(s);
+    if ((popedNumber % 3) != 0)
+    {
+      push(&temp, popedNumber);
+    }
   }
-
-  
-
+  while (!isEmpty(&temp))
+  {
+    push(s, pop(&temp));
+  }
 }
